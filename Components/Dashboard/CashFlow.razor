@@ -1,0 +1,18 @@
+@using ApexCharts
+@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+
+@if (on)
+{
+    <div class="chart-container">
+        <span class="chart-title">@title</span>
+        <div class="chart-line"></div>
+        <div class="chart">
+            <ApexChart Options="@option">
+                <ApexPointSeries Items=CashFlow_Datas Name=@Section_Datas[0] XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Income))" SeriesType="SeriesType.Bar" Color="#0099FF"/>
+                <ApexPointSeries Items=CashFlow_Datas Name=@Section_Datas[1] XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Outcome))" SeriesType="SeriesType.Bar" Color="#FF6D6D"/>
+                <ApexPointSeries Items=CashFlow_Datas Name=@Section_Datas[2] XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Balance))" SeriesType="SeriesType.Line" Color="#FFD16D"/>
+            </ApexChart>
+        </div>
+    </div>
+}

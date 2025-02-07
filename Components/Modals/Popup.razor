@@ -1,0 +1,55 @@
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>@Message</p>
+            </div>
+            <div class="modal-footer">
+                @switch (ButtonCount)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        <button type="button" class="btn btn-primary" @onclick="YesEvent">@Yes</button>
+                        break;
+                    case 2:
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="NoEvent">@No</button>
+                        <button type="button" class="btn btn-primary" @onclick="YesEvent">@Yes</button>
+                        break;
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public Modal Modal { get; set; }
+    
+    [Parameter] 
+    public string Title { get; set; } = "제목";
+
+    [Parameter] 
+    public string Message { get; set; } = "내용";
+
+    [Parameter] 
+    public string Yes { get; set; } = "확인";
+
+    [Parameter] 
+    public string No { get; set; } = "취소";
+
+    [Parameter] 
+    public int ButtonCount { get; set; } = 2;
+
+    [Parameter]
+    public Action YesEvent { get; set; }
+
+    [Parameter]
+    public Action NoEvent { get; set; }
+
+}

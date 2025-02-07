@@ -1,0 +1,56 @@
+ul {
+    list-style: none;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+nav {
+    display: block;
+}
+
+li {
+    display: list-item;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 8px;
+    gap: 8px;
+    color: #0099FF;
+}
+
+.image {
+    width: 30%;
+    height: 100%;
+}
+
+.text {
+    width: 100%;
+    height: 100%;
+}
+
+.image-item {
+
+}
+
+.image-item-select {
+    filter: invert(43%) sepia(71%) saturate(3265%) hue-rotate(183deg) brightness(104%) contrast(105%);
+}
+
+.text-item {
+    font-size: 14px;
+    color: black;
+}
+
+.text-item-select {
+    font-size: 14px;
+    color: #0099FF;
+}

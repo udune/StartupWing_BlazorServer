@@ -1,0 +1,68 @@
+﻿@page "/CustomerManage"
+@rendermode InteractiveServer
+@using StartupWing_BlazorServer.Components.Manager
+@using StartupWing_BlazorServer.Components.Services
+@using StartupWing_BlazorServer.Components.Templates
+@using StartupWing_BlazorServer.Components.Modals
+@inject DataManager DataManager
+@inject APIService APIService
+
+<div class="title-text">고객(계약)관리</div>
+<br/>
+<div class="title-sub-text">다양한 계약서를 확인 하고 저장, 다운 로드 할 수 있습니다.</div>
+<br/><br/>
+
+<div class="contractButtonArea">
+    <button class="@GetContractButtonClass(ContractType.general)"
+            @onclick="@(() => SelectButton(ContractType.general))">
+        @GENERAL_CONTRACT
+    </button>
+    <button class="@GetContractButtonClass(ContractType.product)"
+            @onclick="@(() => SelectButton(ContractType.product))">
+        @PRODUCT_CONTRACT
+    </button>
+    <button class="@GetContractButtonClass(ContractType.service)"
+            @onclick="@(() => SelectButton(ContractType.service))">
+        @SERVICE_CONTRACT
+    </button>
+    <div class="dotLine"></div>
+    <button class="contractButton" @onclick="@GotoModuSign">신규 전자 계약서</button>
+</div>
+
+<br/><br/><br/>
+
+<SearchTemplate OnSearchAction="OnSearch"
+                OnChangeAction="OnChange"
+                ButtonAction="AddContract"
+                ButtonText="계약서 추가"
+                SortByAscendingAction="SortByAscending"
+                SortByDescendingAction="SortByDescending">
+</SearchTemplate>
+
+<TableTemplate @ref="table"
+               ApiDatas="_apiDatas"
+               PageDatas="_pageDatas"
+               TableDatas="_tableDatas"
+               UpdateEvent="UpdatePageData">
+    <Header>
+        <th class="table-header-item" style="width:120px;">관리번호</th>
+        <th class="table-header-item" style="width:330px;">계약서명</th>
+        <th class="table-header-item" style="width:330px;">파일(다운로드)</th>
+        <th class="table-header-item" style="width:120px;">업체명</th>
+        <th class="table-header-item" style="width:120px;">계약일</th>
+        <th class="table-header-item" style="width:120px;">비고</th>
+    </Header>
+    <Row Context="item">
+        <td class="table-body-item" style="width:120px;">@item.ManageNumber</td>
+        <td class="table-body-item" style="width:330px;">@item.Title</td>
+        <td class="table-body-item" style="width:330px;">
+            <NavLink class="nav-link" href="@item.FileData[0].Url">@item.FileData[0].FileName</NavLink>
+        </td>
+        <td class="table-body-item" style="width:120px;">@item.Offeree</td>
+        <td class="table-body-item" style="width:120px;">@item.ContractDate.ToString("yyyy-MM-dd")</td>
+        <td class="table-body-item" style="width:120px;">@item.Notes</td>
+    </Row>
+</TableTemplate>
+
+<Modal @ref="addContract"/>
+<Modal @ref="popup"/>

@@ -1,0 +1,96 @@
+<EditForm Model="AddContractData" OnValidSubmit="OnAddSubmit">
+    <div class="modal-content" @onclick:stopPropagation>
+        <p class="modalTitle">계약서 추가</p>
+        <div class="modalContentArea">
+            <DataAnnotationsValidator/>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">관리 번호</p>
+                <input class="modalContentTypeA" @bind="AddContractData.ManageNumber" @bind:event="oninput" placeholder="관리번호를 입력해주세요. ex) SALIN001">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">계약 종류</p>
+                <div class="modalContentTypeB">
+                    <select class="modalDropDown" @onchange="DropdownOptionEvent" @onfocus="@(() => isDropdownOpen = true)" @onblur="@(() => isDropdownOpen = false)">
+                        <option value="" selected disabled hidden>계약 종류를 선택해주세요.</option>
+                        <option value=@GENERAL_CONTRACT>@GENERAL_CONTRACT</option>
+                        <option value=@PRODUCT_CONTRACT>@PRODUCT_CONTRACT</option>
+                        <option value=@SERVICE_CONTRACT>@SERVICE_CONTRACT</option>
+                    </select>
+                    <div class="dropdownArrow @(isDropdownOpen ? "up" : "down")"></div>
+                </div>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">계약명</p>
+                <input class="modalContentTypeA" @bind="AddContractData.Title" @bind:event="oninput" placeholder="계약명을 입력해주세요. ex) 2024년도 제품 공급 계약서">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">업체명</p>
+                <input class="modalContentTypeA" @bind="AddContractData.Offeree" @bind:event="oninput" placeholder="업체명을 입력해주세요. ex) (주) 살린컴퍼니">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">계약일</p>
+                <input type="date" @bind="AddContractData.ContractDate" placeholder="YYYY-MM-DD"/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">계약 내용</p>
+                <input class="modalContentTypeA" @bind="AddContractData.Term" @bind:event="oninput" placeholder="계약 내용을 입력해주세요. ex) A회사와 B회사는 제품 A의 공급 계약명을 체결합니다.">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">비고</p>
+                <input class="modalContentTypeA" @bind="AddContractData.Notes" @bind:event="oninput" placeholder="내용을 입력해주세요. ex) 계약금 30% 선금 지급 후 납품 완료시 잔금 지급">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">문서 공개 범위</p>
+                <div class="radioGroupContainer">
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value="open"
+                               name="scope"
+                               @onchange="OnChangeIsPublic"
+                               checked="@(AddContractData.IsPublic)">
+                        <span class="radioText">전체</span>
+                    </label>
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value="close"
+                               name="scope"
+                               @onchange="OnChangeIsPublic"
+                               checked="@(!AddContractData.IsPublic)">
+                        <span class="radioText">대외비</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">파일 첨부</p>
+                <div class="modalContentTypeD">
+                    <!-- 드래그 앤 드롭 영역 -->
+                    <div class="uploadFileDragDropArea">
+                    </div>
+                    <!-- 업로드 대기 중 파일 리스트 -->
+                </div>
+            </div>
+        </div>
+        <ValidationSummary/>
+        <div class="modalButtonBoxing">
+            <div class="cancelSaveButtonBoxing">
+                <button class="cancelButton" @onclick="@OnCancel">취소</button>
+                <button class="saveButton" type="submit">저장</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter] 
+    public Modal Modal { get; set; }
+
+    [Parameter] 
+    public ContractData AddContractData { get; set; }
+
+    [Parameter] 
+    public EventCallback AddSubmitAction { get; set; }
+
+}

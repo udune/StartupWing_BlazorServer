@@ -1,0 +1,62 @@
+﻿@using ApexCharts
+@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+@inject IJSRuntime Js
+
+@if (on)
+{
+    <div class="chart-container">
+        <span class="chart-title">@title</span>
+        <div class="chart-line"></div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+                <div @onmouseover="() => ShowTooltip(0)" @onmouseout="() => HideTooltip(0)">
+                    <ApexChart Title=@Section_Datas[0] Options=@GetOption()>
+                        <ApexPointSeries Items=@GetData(0) Name=@Section_Datas[0] XValue=@(item => item.Status) YValue="@(item => Convert.ToDecimal(item.Percent))" SeriesType="SeriesType.Donut" PointColor="color => GetPointColor(color)" ShowDataLabels/>
+                    </ApexChart>
+                </div>
+                <div @onmouseover="() => ShowTooltip(1)" @onmouseout="() => HideTooltip(1)">
+                    <ApexChart Title=@Section_Datas[1] Options=@GetOption()>
+                        <ApexPointSeries Items=@GetData(1) Name=@Section_Datas[1] XValue=@(item => item.Status) YValue="@(item => Convert.ToDecimal(item.Percent))" SeriesType="SeriesType.Donut" PointColor="color => GetPointColor(color)" ShowDataLabels/>
+                    </ApexChart>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="legalEducation_tooltip_first" class="detailTable" style="display:none;">
+        @if (NotCompleted_FirstDatas.Count > 0)
+        {
+            <table>
+                <thead>
+                <th>미수료</th>
+                </thead>
+                <tbody class="grid-container">
+                @foreach (var item in NotCompleted_FirstDatas)
+                {
+                    <td class="grid-item">@item</td>
+                }
+                </tbody>
+            </table>
+        }
+    </div>
+    
+    <div id="legalEducation_tooltip_second" class="detailTable" style="display:none;">
+        @if (NotCompleted_SecondDatas.Count > 0)
+        {
+            <table>
+                <thead>
+                <th>미수료</th>
+                </thead>
+                <tbody>
+                <div class="grid-container">
+                    @foreach (var item in NotCompleted_SecondDatas)
+                    {
+                        <div class="grid-item">@item</div>
+                    }
+                </div>
+                </tbody>
+            </table>
+        }
+    </div>
+}

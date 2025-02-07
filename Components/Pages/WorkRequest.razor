@@ -1,0 +1,67 @@
+﻿@page "/workRequest"
+
+<div class="contents">
+    <div class="contents-main">
+        <div class="view">
+            <div class="frame">
+                <div class="text-wrapper">필요하신 업무 요청을 해주세요.</div>
+            </div>
+            <div class="div">
+                <div class="frame-2">
+                    <div class="frame-3">
+                        <div class="div-wrapper">
+                            <span class="text-wrapper-2" @onclick="ToggleAllSelection" style="cursor: pointer; user-select: none;">
+                                전체선택
+                            </span>
+                        </div>
+                        <div class="frame-4">
+                            <label class="check-container">
+                                <input type="checkbox" @bind="IsCertificateSelected"/>
+                                <span class="check-mark"></span>
+                                <span class="text-wrapper-3">재직증명서</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" @bind="IsIncomeProofSelected"/>
+                                <span class="check-mark"></span>
+                                <span class="text-wrapper-3">원천징수영수증</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" @bind="IsCareerProofSelected"/>
+                                <span class="check-mark"></span>
+                                <span class="text-wrapper-3">경력증명서</span>
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" @bind="IsOtherSelected"/>
+                                <span class="check-mark"></span>
+                                <span class="text-wrapper-3">기타</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="service-tab">
+                        <img class="clipboard-outline" src="images/clipboard-outline 3.svg"/>
+                        <div class="text-wrapper-4">임직원 서류발급</div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="frame-7">
+                    <div class="service-tab-2">
+                        <img class="clipboard-outline" src="images/clipboard-outline 3.svg"/>
+                        <div class="text-wrapper-4">일반 업무 요청</div>
+                    </div>
+                    <div class="frame-8">
+                        <div class="frame-9">
+                            <div class="text-wrapper-5">내용</div>
+                            <div class="text-wrapper-6">@($"{GeneralRequestContent?.Length} / 500자")</div>
+                        </div>
+                        <textarea class="frame-10" maxlength="500" @bind="GeneralRequestContent" placeholder="일반 업무 요청이 필요하신가요?" @oninput="UpdateCharacterCount"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" @onclick="SubmitRequest">
+                <div class="frame-11">
+                    <div class="text-wrapper-8">요청하기</div>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>

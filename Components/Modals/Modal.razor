@@ -1,0 +1,8 @@
+﻿@namespace StartupWing_BlazorServer.Components.Modals
+
+<div role="dialog" class="modal-overlay @(IsShow ? "active" : "") @(IsOutClose ? "close" : "")" @onclick="OnClick_Out">
+    @if(Contents != null)
+    {
+        @Contents
+    }
+</div>

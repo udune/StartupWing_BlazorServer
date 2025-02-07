@@ -1,0 +1,32 @@
+@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+
+@if (on)
+{
+    <div class="chart-container">
+        <span class="chart-title">@title</span>
+        <div class="chart-line"></div>
+        <span class="chart-unit">@unit</span>
+        <table>
+            <thead>
+            <tr>
+                @foreach (var th in GovFundProject_Data[1])
+                {
+                    <th class="th">@th</th>
+                }
+            </tr>
+            </thead>
+            <tbody>
+            @for (int tr = 2; tr < GovFundProject_Data.Count; tr++)
+            {
+                <tr>
+                    @foreach (var td in GovFundProject_Data[tr])
+                    {
+                        <td class="td">@td</td>
+                    }
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

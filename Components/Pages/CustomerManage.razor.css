@@ -1,0 +1,55 @@
+.contractButtonArea {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+    gap: 12px;
+}
+
+.contractButton {
+    background-color: #ffffff;
+    border: 1px solid #0099FF;
+    border-radius: 100px;
+    color: #0099FF;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.contractButton.selected {
+    background-color: #0099FF;
+    color: #ffffff;
+}
+
+.dotLine {
+    background-image: url("images/dotLine.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 1px;
+    height: 32px;
+}
+
+.table-header-item {
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%
+}
+
+.table-body-item {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 16px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}

@@ -1,0 +1,19 @@
+.table-header-item {
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%
+}
+
+.table-body-item {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 16px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}

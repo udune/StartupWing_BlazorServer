@@ -1,0 +1,64 @@
+@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+
+@if (on)
+{
+    <div class="chart-container">
+        <span class="chart-title">@title</span>
+        <div class="chart-line"></div>
+        <span class="chart-unit">@unit</span>
+        <table>
+            <thead>
+            <tr>
+                @foreach (var (th, index) in FinancialOverview_Data[1].Select((th, index) => (th, index)))
+                {
+                    if (index == 1)
+                        continue;
+                    
+                    if (index == 0)
+                    {
+                        <th class="th" colspan="2">@th</th>
+                    }
+                    else
+                    {
+                        <th class="th">@th</th>
+                    }
+                }
+            </tr>
+            </thead>
+            <tbody>
+            @for (int tr = 2; tr < FinancialOverview_Data.Count; tr++)
+            {
+                <tr>
+                    @foreach (var (td, index) in FinancialOverview_Data[tr].Select((td, index) => (td, index)))
+                    {
+                        bool skipColumn1 = (tr == 3 || tr == 4 || tr == 6 || tr == 7) && index == 0;
+                        bool skipColumn2 = (tr == 8 || tr == 9) && index == 1;
+                        bool colspan = (tr == 8 || tr == 9) && index == 0;
+                        bool rowspan = (tr == 2 || tr == 5) && index == 0;
+                        
+                        if (skipColumn1)
+                            continue;
+                        
+                        if (skipColumn2)
+                            continue;
+
+                        if (colspan)
+                        {
+                            <td class="td" colspan="2">@td</td>
+                        }
+                        else if (rowspan)
+                        {
+                            <td class="td" rowspan="3">@td</td>
+                        }
+                        else
+                        {
+                            <td class="td">@td</td>
+                        }
+                    }
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

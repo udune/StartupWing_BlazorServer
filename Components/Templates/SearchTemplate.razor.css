@@ -1,0 +1,115 @@
+input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+input::placeholder {
+    color: #8A8A8A;
+}
+
+button:disabled {
+    background-color: #d3d3d3;
+    color: #888;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.inputField_search {
+    background-image: url("images/icon-search.svg");
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding: 10px 14px 10px 40px;
+    width: 390px;
+    height: 44px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    border-radius: 4px;
+    gap: 8px;
+}
+
+.button {
+    width: 100px;
+    height: 44px;
+    background-color: #0099FF;
+    border: 0;
+    border-radius: 4px;
+    padding: 10px 14px;
+    gap: 8px;
+}
+
+.buttonText {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #ffffff;
+}
+
+.sortButtons {
+    margin-left: auto; /* 오른쪽 끝으로 이동 */
+    display: flex; /* 버튼들을 가로로 배치 */
+    gap: 10px; /* 버튼 간격 */
+    width: 170px; /* 전체 컨테이너 너비 */
+    height: 44px; /* 전체 컨테이너 높이 */
+}
+
+.sortButton {
+    display: flex; /* 텍스트와 아이콘을 나란히 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 80px; /* 버튼 너비 */
+    height: 44px; /* 버튼 높이 */
+    padding: 10px 10px 6px; /* 상하좌우 패딩 */
+    gap: 4px; /* 텍스트와 화살표 사이 간격 */
+    border: none;
+    background-color: transparent;
+    font-weight: 400; /* 텍스트 두께 */
+    font-size: 14px; /* 텍스트 크기 */
+    line-height: 16px; /* 텍스트 줄 높이 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+    color: #8A8A8A;
+}
+
+.sortButton.active {
+    color: #0099FF; /* 활성화된 버튼 텍스트 색상 */
+}
+
+.sortButtonText {
+    flex: 1; /* 텍스트가 공간을 차지하도록 설정 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.sortArrowIcon {
+    display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    mask-image: url("images/DataSortArrow.svg"); /* 화살표 이미지를 마스크로 사용 */
+    -webkit-mask-image: url("images/DataSortArrow.svg"); /* safari 같은 WebKit 브라우저 지원 */
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    background-color: #8A8A8A; /* 기본 색상 */
+}
+
+.sortArrowIcon.down {
+    transform: rotate(180deg);
+}
+
+.sortArrowIcon.up {
+    transform: rotate(0deg);
+}
+
+.sortArrowIcon.active {
+    background-color: #0099FF;
+    /* 활성화된 화살표 색상 */
+}

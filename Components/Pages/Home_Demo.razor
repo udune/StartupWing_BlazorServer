@@ -1,0 +1,15 @@
+@page "/demo"
+@using BitzArt.Blazor.Cookies
+@using StartupWing_BlazorServer.Components.Manager
+@using StartupWing_BlazorServer.Components.Services
+@rendermode InteractiveServer
+@inject TokenService TokenService
+@inject ICookieService CookieService
+@inject APIService APIService
+@inject DataManager DataManager
+@inject NavigationManager Navigation
+
+@if (on)
+{
+    <Dashboard Company="데모"/>
+}

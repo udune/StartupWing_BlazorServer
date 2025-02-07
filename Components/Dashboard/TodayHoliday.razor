@@ -1,0 +1,38 @@
+﻿@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+@inject IJSRuntime Js
+
+@if (on)
+{
+    <div class="chart-container">
+        <div class="container-justify">
+            <span class="chart-title">@title</span>
+            <div class="container-item">@totalCount</div>
+        </div>
+        <div class="chart-line"></div>
+        <div class="grid">
+            @foreach (var item in TodayHolidayDatas)
+            {
+                <div class="chart" @onmouseover="() => Show(item.Count, item.Roster)" @onmouseout="Hide">@item.Department<span>@item.Count</span></div>
+            }
+        </div>
+    </div>
+
+    <div id="todayHoliday_tooltip" class="detailTable" style="display:none;">
+        <table>
+            <thead>
+            <th>@Header_Datas[0]</th><th>@Header_Datas[3]</th>
+            </thead>
+            <tbody>
+            @foreach (var item in CurrentRoster)
+            {
+                <tr><td>@item.Name</td><td>@item.Type</td></tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    
+}

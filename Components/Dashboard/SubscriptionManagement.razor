@@ -1,0 +1,41 @@
+@using ApexCharts
+@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+
+@if (on)
+{
+    <div class="chart-container">
+        <span class="chart-title">@title</span>
+        <div class="chart-line"></div>
+        <div class="chart">
+            <ApexChart Options=@option>
+                <ApexPointSeries Name="@Header_Datas[0]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Total))"
+                                 SeriesType="SeriesType.Bar" Color="#0099ff"/>
+                <ApexPointSeries Name="@Header_Datas[1]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[0]))"
+                                 SeriesType="SeriesType.Line" Color="#fe5a6d" Hidden=@(Header_Datas[1] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[2]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[1]))"
+                                 SeriesType="SeriesType.Line" Color="#ffde48" Hidden=@(Header_Datas[2] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[3]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[2]))"
+                                 SeriesType="SeriesType.Line" Color="#80b5ff" Hidden=@(Header_Datas[3] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[4]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[3]))"
+                                 SeriesType="SeriesType.Line" Color="#3DDF70" Hidden=@(Header_Datas[4] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[5]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[4]))"
+                                 SeriesType="SeriesType.Line" Color="#14b747" Hidden=@(Header_Datas[5] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[6]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[5]))"
+                                 SeriesType="SeriesType.Line" Color="#FDFDA5" Hidden=@(Header_Datas[6] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[7]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[6]))"
+                                 SeriesType="SeriesType.Line" Color="#91FE65" Hidden=@(Header_Datas[7] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[8]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[7]))"
+                                 SeriesType="SeriesType.Line" Color="#94efc2" Hidden=@(Header_Datas[8] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[9]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[8]))"
+                                 SeriesType="SeriesType.Line" Color="#CFCFCF" Hidden=@(Header_Datas[9] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[10]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[9]))"
+                                 SeriesType="SeriesType.Line" Color="#53bbcc" Hidden=@(Header_Datas[10] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[11]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[10]))"
+                                 SeriesType="SeriesType.Line" Color="#fe5a6d" Hidden=@(Header_Datas[11] == "-")/>
+                <ApexPointSeries Name="@Header_Datas[12]" Items="SubscriptionManagement_Datas" XValue="@(item => item.Month)" YValue="@(item => Convert.ToDecimal(item.Subscriptions[11]))"
+                                 SeriesType="SeriesType.Line" Color="#ffde48" Hidden=@(Header_Datas[12] == "-")/>
+            </ApexChart>
+        </div>
+    </div>
+}

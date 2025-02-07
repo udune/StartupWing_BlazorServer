@@ -1,0 +1,83 @@
+<EditForm Model="AddDocumentData" OnValidSubmit="OnAddSubmit">
+    <div class="modal-content" @onclick:stopPropagation>
+        <p class="modalTitle">서류 추가</p>
+        <div class="modalContentArea">
+            <DataAnnotationsValidator/>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">관리 번호</p>
+                <input class="modalContentTypeA" @bind="AddDocumentData.ManageNumber" @bind:event="oninput"
+                       placeholder="관리번호를 입력해주세요. ex) SALIN001">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">문서명</p>
+                <input class="modalContentTypeA" @bind="AddDocumentData.Title" @bind:event="oninput"
+                       placeholder="문서명을 입력해주세요. ex) SALIN001">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">작성일</p>
+                <input type="date" @bind="AddDocumentData.CreatedTime" placeholder="YYYY-MM-DD"/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">유효 기간</p>
+                <input type="date" @bind="AddDocumentData.ExpireAt" placeholder="YYYY-MM-DD">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">비고</p>
+                <input class="modalContentTypeA" @bind="AddDocumentData.Note" @bind:event="oninput"
+                       placeholder="내용을 입력해주세요. ex) 계약금 30% 선금 지급 후 납품 완료시 잔금 지급">
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">문서 공개 범위</p>
+                <div class="radioGroupContainer">
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value="open"
+                               name="scope"
+                               @onchange="OnChangeIsPublic"
+                               checked="@(AddDocumentData.IsPublic)">
+                        <span class="radioText">전체</span>
+                    </label>
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value="close"
+                               name="scope"
+                               @onchange="OnChangeIsPublic"
+                               checked="@(!AddDocumentData.IsPublic)">
+                        <span class="radioText">대외비</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">파일 첨부</p>
+                <div class="modalContentTypeD">
+                    <!-- 드래그 앤 드롭 영역 -->
+                    <div class="uploadFileDragDropArea">
+                    </div>
+                    <!-- 업로드 대기 중 파일 리스트 -->
+                </div>
+            </div>
+        </div>
+        <ValidationSummary/>
+        <div class="modalButtonBoxing">
+            <div class="cancelSaveButtonBoxing">
+                <button class="cancelButton" @onclick="@OnCancel">취소</button>
+                <button class="saveButton" type="submit">저장</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter] 
+    public Modal Modal { get; set; }
+
+    [Parameter] 
+    public DocumentData AddDocumentData { get; set; }
+
+    [Parameter] 
+    public EventCallback AddSubmitAction { get; set; }
+
+}

@@ -1,0 +1,34 @@
+﻿@using StartupWing_BlazorServer.Components.Manager
+@using StartupWing_BlazorServer.Components.Modals
+@using StartupWing_BlazorServer.Components.Services
+@inherits LayoutComponentBase
+@rendermode InteractiveServer
+@inject DataManager DataManager
+@inject NavigationManager Navigation
+@inject APIService APIService
+
+<body>
+<div id="root">
+    <header class="swing-header" hidden=@DataManager.Hidden>
+        <div class="swing-top">
+            <HeadMenu SideMenu="sideMenu" MainLayout="this"/>
+        </div>
+    </header>
+    <div class="swing-main">
+        <div class="side-menu" hidden=@DataManager.Hidden>
+            <SideMenu @ref="sideMenu"/>
+        </div>
+        <main class="main-page">
+            <article class="main-article">
+                @Body
+            </article>
+        </main>
+    </div>
+    <footer class="swing-bottom">
+            
+    </footer>
+</div>
+</body>
+
+<Modal @ref="login" />
+<Modal @ref="popup" />

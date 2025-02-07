@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BitzArt.Blazor.Cookies.Client" Version="1.1.2" />
+    <PackageReference Include="BitzArt.Blazor.Cookies.Server" Version="1.1.2" />
+    <PackageReference Include="Blazor-ApexCharts" Version="4.0.1" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
+    <PackageReference Include="Google.Apis.Sheets.v4" Version="1.68.0.3568" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\bootstrap\bootstrap.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\bootstrap\bootstrap.min.css.map" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Chart\ChartDatetime.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Chart\ChartPie.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Icon\Icon.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Progress\Progress.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Progress\ProgressBasic.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Progress\ProgressIndetermine.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Progress\ProgressSize.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Statistics\ChartStatistics.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Statistics\LineChartStatistics.razor" />
+    <_ContentIncludedByDefault Remove="Components\Templates\Statistics\MediumStatistics.razor" />
+    <_ContentIncludedByDefault Remove="wwwroot\Js\fileUpload.js" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="google-credentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

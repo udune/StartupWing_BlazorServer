@@ -1,0 +1,42 @@
+@using StartupWing_BlazorServer.Components.Manager
+@inject DataManager DataManager
+
+<div class="horizontal">
+    <input class="inputField_search" @onkeydown="OnSearch" @bind="searching" @bind:event="oninput" @onfocusout="OnChange" placeholder="검색어를 입력해주세요."/>
+    <button class="button" disabled="@(DataManager.MyData?.Role == "M" || DataManager.MyData?.Role == "U" || DataManager.MyData == null)" @onclick="@OnButton">
+        <span class="buttonText">@ButtonText</span>
+    </button>
+    <div class="sortButtons">
+        <button class="sortButton @(currentSortData.Equals(DataSort.Descending) ? "active" : "")" @onclick="SortByDescending">
+            <span>최신 순</span>
+            <span class="sortArrowIcon down @(currentSortData.Equals(DataSort.Descending) ? "active" : "")"></span>
+        </button>
+        <button class="sortButton @(currentSortData.Equals(DataSort.Ascending) ? "active" : "")" @onclick="SortByAscending">
+            <span>과거 순</span>
+            <span class="sortArrowIcon up @(currentSortData.Equals(DataSort.Ascending) ? "active" : "")"></span>
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Action<KeyboardEventArgs, string>? OnSearchAction { get; set; }
+    
+    [Parameter]
+    public Action<string>? OnChangeAction { get; set; }
+    
+    [Parameter]
+    public Action? ButtonAction { get; set; }
+    
+    [Parameter]
+    public string ButtonText { get; set; }
+    
+    [Parameter]
+    public Action? SortByDescendingAction { get; set; }
+    
+    [Parameter]
+    public Action? SortByAscendingAction { get; set; }
+
+    private string searching;
+    private DataSort currentSortData = DataSort.Descending;
+}

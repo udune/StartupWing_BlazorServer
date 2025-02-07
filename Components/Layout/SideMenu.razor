@@ -1,0 +1,78 @@
+﻿<nav>
+    <ul>
+        <li>
+            <NavLink class="nav-link" href="/" @onclick="() => On(0)">
+                <div class="list-item">
+                    <div class="image">
+                        <div class="@image_class_list[0]">
+                            <img src="images/Dashboard.svg" alt="Dashboard"/>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="@text_class_list[0]">대시보드</div>
+                    </div>
+                </div>
+            </NavLink>
+        </li>
+        <br>
+        <li>
+            <NavLink class="nav-link" href="DocumentManage" @onclick="() => On(1)">
+                <div class="list-item">
+                    <div class="image">
+                        <div class="@image_class_list[1]">
+                            <img src="images/DocumentManage.svg" alt="DocumentManage"/>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="@text_class_list[1]">서류관리</div>
+                    </div>
+                </div>
+            </NavLink>
+        </li>
+        <br>
+        <li>
+            <NavLink class="nav-link" href="CustomerManage" @onclick="() => On(2)">
+                <div class="list-item">
+                    <div class="image">
+                        <div class="@image_class_list[2]">
+                            <img src="images/CustomerManage.svg" alt="CustomerManage"/>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="@text_class_list[2]">고객(계약)관리</div>
+                    </div>
+                </div>
+            </NavLink>
+        </li>
+        <br>
+        <li>
+            <NavLink class="nav-link" href="employeeManager" @onclick="() => On(3)">
+                <div class="list-item">
+                    <div class="image">
+                        <div class="@image_class_list[3]">
+                            <img src="images/EmployeeManage.svg" alt="EmployeeManage"/>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="@text_class_list[3]">직원관리</div>
+                    </div>
+                </div>
+            </NavLink>
+        </li>
+        <br>
+        <li>
+            <NavLink class="nav-link" href="workRequest" @onclick="() => On(4)">
+                <div class="list-item">
+                    <div class="image">
+                        <div class="@image_class_list[4]">
+                            <img src="images/WorkRequest.svg" alt="WorkRequest"/>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="@text_class_list[4]">업무 요청</div>
+                    </div>
+                </div>
+            </NavLink>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,42 @@
+@using StartupWing_BlazorServer.Components.Manager
+@inject DataManager DataManager
+
+<div class="swing-logo" @onclick="Home">
+    <NavLink href="/">
+        <img src="images/logo.svg" alt="SVG Image">
+    </NavLink>
+</div>
+<nav class="nav-normal">
+    <ul class="css-normal">
+        <li>
+            <NavLink class="nav-link" href="https://dev.startupwing.net/">
+                <span class="swing-top-item-text">서비스소개</span>
+            </NavLink>
+        </li>
+        <li>
+            <NavLink class="nav-link" href="https://startupwing.stibee.com/">
+                <span class="swing-top-item-text">뉴스레터</span>
+            </NavLink>
+        </li>
+        <li>
+            <NavLink class="nav-link" href="https://dev.startupwing.net/faq">
+                <span class="swing-top-item-text">FAQ</span>
+            </NavLink>
+        </li>
+        @* <li> *@
+        @*     @if (DataManager.MyData == null && string.IsNullOrEmpty(DataManager.MyAccessToken)) *@
+        @*     { *@
+        @*         <NavLink class="nav-link" @onclick="MainLayout.OnLogin"> *@
+        @*             <span class="swing-top-item-login-text">로그인</span> *@
+        @*         </NavLink> *@
+        @*     } *@
+        @*     else *@
+        @*     { *@
+        @*         <NavLink class="nav-link" @onclick="MainLayout.OnLogout"> *@
+        @*             <span class="swing-top-item-login-text">로그아웃</span> *@
+        @*         </NavLink> *@
+        @*     } *@
+        @* </li> *@
+    </ul>
+</nav>
+

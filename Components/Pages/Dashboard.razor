@@ -1,0 +1,47 @@
+<div class="header">
+    <div class="title-text">대시보드</div>
+    <div class="modify" @onclick="OpenModify">
+        <img src="images/Pencil.svg" alt="Pencil"/>
+        <span class="modify-text">변경</span>
+    </div>
+</div>
+
+<br/>
+
+@if (itemList.Any())
+{
+    @for (int rowIdx = 0; rowIdx < itemList.Count; rowIdx += 3)
+    {
+        <div class="dashboard-row">
+            @for (int colIdx = 0; colIdx < 3 && rowIdx + colIdx < itemList.Count; colIdx++)
+            {
+                <div class="dashboard-col-3">
+                    @GetItem(itemList[rowIdx + colIdx], Company)
+                </div>
+            }
+        </div>
+        <br/>
+    }
+}
+
+@if (modify)
+{
+    <div class="modal-overlay" @onclick="CloseModify">
+        <div class="modal-base">
+            <div class="modal-content @PageType" @onclick:stopPropagation>
+                <div class="modal-list">
+                    @foreach (var item in itemNameList.Select((name, index) => new { name, index }))
+                    {
+                        <div class="modal-list-item">
+                            <div class="modal-list-item-title">@item.name.Split("_")[1]</div>
+                            <input type="checkbox" @bind="@checkArray_temp[item.index]" @onclick="() => OnCheckBox(item.index)"/>
+                        </div>
+                    }
+                    <div class="modal-list-button" @onclick="Save">
+                        <div class="modal-list-button-text">완료</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

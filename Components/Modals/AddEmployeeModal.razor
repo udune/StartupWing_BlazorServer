@@ -1,0 +1,54 @@
+@using StartupWing_BlazorServer.Components.Manager
+@using StartupWing_BlazorServer.Components.Services
+@inject SwingServerApiService SwingServerApiService
+@inject DataManager DataManager
+
+@if (IsAddEmployeeOpen)
+{
+    <div class="modal-content" @onclick:stopPropagation>
+        <div class="modal-header">
+            <h2 class="modal-title">기업 임직원 초대</h2>
+            <div class="modal-underline"></div>
+            <p class="modal-subtitle">임직원 이메일 입력</p>
+        </div>
+        <div class="email-input-group">
+            <label class="email-label">이메일</label>
+            <div class="email-items-container">
+                @foreach (var email in EmailList)
+                {
+                    <div class="email-item">
+                        @email
+                        <button class="delete-button" @onclick="@(() => RemoveEmail(email))">
+                            <img src="images/close-circle-outline 1.svg" alt="Delete" class="delete-icon"/>
+                        </button>
+                    </div>
+                }
+                <input type="text" class="email-input"
+                       placeholder="@(EmailList.Count == 0 ? "이메일을 입력해주세요." : "")"
+                       value="@CurrentEmail"
+                       @oninput="(e) => CurrentEmail = e.Value?.ToString()"
+                       @onkeydown="HandleKeyDown"/>
+            </div>
+        </div>
+        <button class="submit-button" @onclick="SubmitEmails">초대하기</button>
+    </div>
+}
+
+@if (IsAddSuccessOpen)
+{
+    <div class="AddSuccess-modal-content" @onclick:stopPropagation>
+        <div class="AddSuccess-modal-header">
+            <p class="message">초대 메일이 전송되었습니다.</p>
+        </div>
+        <div class="AddSuccess-modal-footer">
+            <button class="AddSuccess-confirm-button" @onclick="CloseAddSuccessModal">확인</button>
+        </div>
+    </div>
+}
+
+@code {
+
+    [Parameter]
+    public Modal Modal { get; set; }
+
+}

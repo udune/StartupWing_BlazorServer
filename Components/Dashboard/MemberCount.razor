@@ -1,0 +1,19 @@
+﻿@using StartupWing_BlazorServer.Components.Services
+@inject GoogleSheetsService GoogleSheetsService
+
+@if (on)
+{
+    <div class="chart-container">
+        <div class="container-justify">
+            <span class="chart-title">@title</span>
+            <div class="container-item">@totalCount</div>
+        </div>
+        <div class="chart-line"></div>
+        <div class="grid">
+            @foreach (var item in MemberCount_Datas)
+            {
+                <div class="chart">@item.Department<span>@item.Count</span></div>
+            }
+        </div>
+    </div>
+}

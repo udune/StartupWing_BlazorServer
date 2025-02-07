@@ -1,0 +1,46 @@
+@using StartupWing_BlazorServer.Components.Manager
+@using StartupWing_BlazorServer.Components.Services
+@inject APIService APIService
+@inject DataManager DataManager
+@inject NavigationManager Navigation
+
+<EditForm Model="loginInfo" OnValidSubmit="RequestLogin">
+    <DataAnnotationsValidator/>
+    <div class="modal-content" @onclick:stopPropagation>
+        <div class="modal-header">
+            <div class="modal-header-item">
+                <div class="modal-header-item-text">
+                    <h2 class="modal-title">로그인</h2>
+                </div>
+                <div class="modal-header-item-enableLine"></div>
+            </div>
+            <div class="modal-header-item">
+                <div class="modal-header-item-text">
+                    <h2 class="modal-title">회원가입</h2>
+                </div>
+                <div class="modal-header-item-disableLine"></div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="modal-body-input-layout">
+                <div class="modal-body-input-title">이메일</div>
+                <input type="email" placeholder="이메일을 입력해주세요." class="modal-body-input" @bind="loginInfo.email"/>
+            </div>
+            <div class="modal-body-input-layout">
+                <div class="modal-body-input-title">비밀번호</div>
+                <input type="password" placeholder="비밀번호를 입력해주세요." class="modal-body-input" @bind="loginInfo.password"/>
+            </div>
+        </div>
+        <ValidationSummary/>
+        <button class="modal-button" type="submit">
+            <div class="modal-button-text">로그인</div>
+        </button>
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public Modal Modal { get; set; }
+
+}

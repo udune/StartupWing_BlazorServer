@@ -1,0 +1,112 @@
+@typeparam TItem
+
+<table class="table">
+    <thead>
+        <tr class="table-header">
+            @Header
+        </tr>
+    </thead>
+    <tbody>
+        @if (ApiDatas?.Count > 0)
+        {
+            @foreach (var item in PageDatas)
+            {
+                <tr class="table-body" @onclick=@(() => OnRowClick(item))>
+                    @Row(item)
+                </tr>
+            }
+            <div class="paginationContainer">
+                <button class="paginationArrow-button prev" @onclick="PreviousPage" disabled=@IsFirstPage></button>
+                @for (var i = 1; i <= TotalPage; i++)
+                {
+                    var selectPage = i;
+                    <button class="pageButton @GetPageButtonClass(selectPage)"
+                            @onclick="@(() => SelectPage(selectPage))">@i</button>
+                }
+                <button class="paginationArrow-button next" @onclick="NextPage" disabled="@IsLastPage"></button>
+            </div>
+        }
+        else
+        {
+            <div class="emptyText">조회할 수 있는 데이터가 없습니다.</div>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public RenderFragment Header { get; set; }
+    
+    [Parameter]
+    public RenderFragment<TItem> Row { get; set; }
+    
+    [Parameter]
+    public IReadOnlyList<TItem> PageDatas { get; set; }
+    
+    [Parameter]
+    public IReadOnlyList<TItem> ApiDatas { get; set; }
+    
+    [Parameter]
+    public IReadOnlyList<TItem> TableDatas { get; set; }
+
+    [Parameter] 
+    public Action<TItem>? RowEvent { get; set; }
+    
+    [Parameter]
+    public Action<int>? UpdateEvent { get; set; }
+
+    private int _pageSize = 10;
+    private int _currentPage = 1;
+    
+    private int TotalPage => (int)Math.Ceiling((double)TableDatas.Count / _pageSize);
+    
+    private bool IsFirstPage => _currentPage.Equals(1);
+    private bool IsLastPage => _currentPage.Equals(TotalPage);
+
+    private void OnRowClick(TItem item)
+    {
+        RowEvent?.Invoke(item);
+    }
+    
+    private void SelectPage(int selectPage)
+    {
+        if (!_currentPage.Equals(selectPage))
+        {
+            _currentPage = selectPage;
+            UpdateEvent?.Invoke(_currentPage);
+        }
+    }
+    
+    private void NextPage()
+    {
+        if (!IsLastPage)
+        {
+            _currentPage++;
+            UpdateEvent?.Invoke(_currentPage);
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (!IsFirstPage)
+        {
+            _currentPage--;
+            UpdateEvent?.Invoke(_currentPage);
+        }
+    }
+    
+    private string GetPageButtonClass(int page)
+    {
+        return _currentPage.Equals(page) ? "selected" : "default";
+    }
+
+    public void TableUpdate(IReadOnlyList<TItem> pageDatas, IReadOnlyList<TItem>? tableDatas = null)
+    {
+        PageDatas = pageDatas;
+        if (tableDatas != null)
+        {
+            TableDatas = tableDatas;
+        }
+        StateHasChanged();
+    }
+}

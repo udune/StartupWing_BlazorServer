@@ -1,0 +1,111 @@
+<EditForm Model="ModifyEmployeeData" OnValidSubmit="OnModifySubmit">
+    <div class="modal-content" @onclick:stopPropagation>
+        <p class="modalTitle">직원 관리</p>
+        <div class="modalContentArea">
+            <DataAnnotationsValidator/>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">이름</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.Name" @bind:event="oninput"
+                       placeholder="이름을 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">이메일</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.Email" @bind:event="oninput"
+                       placeholder="이메일을 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">전화번호</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.PhoneNumber" @bind:event="oninput"
+                       placeholder="전화번호를 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">부서</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.Department" @bind:event="oninput"
+                       placeholder="부서를 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">직책</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.Position" @bind:event="oninput"
+                       placeholder="직책을 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">입사일</p>
+                <input type="date" @bind="ModifyEmployeeData.CreatedTime" placeholder="YYYY-MM-DD"/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">주소</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.Address" @bind:event="oninput"
+                       placeholder="주소를 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">계좌번호</p>
+                <input class="modalContentTypeA" @bind="ModifyEmployeeData.AccountNumber" @bind:event="oninput"
+                       placeholder="계좌번호를 입력해주세요."/>
+            </div>
+            <div class="modalContentBoxing">
+                <p class="modalContentTitle">권한</p>
+                <div class="radioGroupContainer">
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value=@(ModifyEmployeeData.OrganizationId != null ? "M" : "U")
+                               name="scope"
+                               @onchange="OnChangeRole"
+                               checked=@(ModifyEmployeeData.Role!.Equals("M") || ModifyEmployeeData.Role!.Equals("U"))
+                               disabled=@(MyRole != null && (MyRole.Equals("M") || MyRole.Equals("U")))/>
+                        <span class="radioText">일반</span>
+                    </label>
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value="A"
+                               name="scope"
+                               @onchange="OnChangeRole"
+                               checked=@(ModifyEmployeeData.Role.Equals("A"))
+                               disabled=@(MyRole != null && (MyRole.Equals("M") || MyRole.Equals("U")))/>
+                        <span class="radioText">관리자</span>
+                    </label>
+                    <label class="radioLabel">
+                        <input type="radio"
+                               style="width: 18px; height: 18px;"
+                               value="C"
+                               name="scope"
+                               @onchange="OnChangeRole"
+                               checked=@ModifyEmployeeData.Role.Equals("C")
+                               disabled=@(MyRole != null && (MyRole.Equals("M") || MyRole.Equals("U")))/>
+                        <span class="radioText">컨시어지</span>
+                    </label>
+                </div>
+            </div>
+            <ValidationSummary/>
+            <div class="modalButtonBoxing">
+                <div class="cancelSaveButtonBoxing">
+                    <button class="cancelButton" @onclick="OnCancel">취소</button>
+                    <button class="saveButton" type="submit">저장</button>
+                </div>
+                <button class="deleteButton" @onclick="OnRemoveSubmit"
+                        disabled="@(MyRole == "M" || MyRole == "U")">삭제
+                </button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public Modal Modal { get; set; }
+    
+    [Parameter]
+    public UserData ModifyEmployeeData { get; set; }
+    
+    [Parameter]
+    public string MyRole { get; set; }
+    
+    [Parameter]
+    public EventCallback ModifySubmitAction { get; set; }
+    
+    [Parameter]
+    public EventCallback OnRemoveSubmitAction { get; set; }
+    
+}

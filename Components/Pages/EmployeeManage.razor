@@ -1,0 +1,64 @@
+﻿@page "/employeeManager"
+@rendermode InteractiveServer
+@using StartupWing_BlazorServer.Components.Services
+@using StartupWing_BlazorServer.Components.Manager
+@using StartupWing_BlazorServer.Components.Modals
+@using StartupWing_BlazorServer.Components.Templates
+@inject APIService APIService
+@inject DataManager DataManager
+
+<div class="title-text">직원관리</div>
+<br/>
+<div class="title-sub-text">직원을 관리할 수 있습니다.</div>
+<br/><br/>
+
+<SearchTemplate OnSearchAction="OnSearch" 
+                OnChangeAction="OnChange"
+                ButtonAction="AddUser"
+                ButtonText="직원 추가"
+                SortByAscendingAction="SortByAscending"
+                SortByDescendingAction="SortByDescending">
+</SearchTemplate>
+
+<TableTemplate @ref="table" 
+               ApiDatas="_apiDatas" 
+               PageDatas="_pageDatas" 
+               TableDatas="_tableDatas" 
+               RowEvent="ModifyUser" 
+               UpdateEvent="UpdatePageData">
+    <Header>
+        <th class="table-header-item" style="width:120px;">이름</th>
+        <th class="table-header-item" style="width:270px;">이메일</th>
+        <th class="table-header-item" style="width:120px;">닉네임</th>
+        <th class="table-header-item" style="width:120px;">부서</th>
+        <th class="table-header-item" style="width:120px;">직책</th>
+        <th class="table-header-item" style="width:270px;">입사일</th>
+        <th class="table-header-item" style="width:120px;">권한</th>
+    </Header>
+    <Row Context="item">
+        <td class="table-body-item" style="width:120px;">@item.Name</td>
+        <td class="table-body-item" style="width:270px;">@item.Email</td>
+        <td class="table-body-item" style="width:120px;">@item.Nickname</td>
+        <td class="table-body-item" style="width:120px;">@item.Department</td>
+        <td class="table-body-item" style="width:120px;">@item.Position</td>
+        <td class="table-body-item" style="width:270px;">@item.CreatedTime.ToString("yyyy-MM-dd")</td>
+        <td class="table-body-item" style="width:120px;">
+            @if (item.Role == "C")
+            {
+                <span class="conciergeBadge">컨시어지</span>
+            }
+            else if (item.Role == "A")
+            {
+                <span class="adminBadge">관리자</span>
+            }
+            else
+            {
+                <span class="normalBadge">일반</span>
+            }
+        </td>
+    </Row>
+</TableTemplate>
+
+<Modal @ref="addEmployee" />
+<Modal @ref="modifyEmployee" />
+<Modal @ref="popup" />
