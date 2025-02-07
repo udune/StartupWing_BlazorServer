@@ -8,9 +8,9 @@ using Google.Apis.Sheets.v4.Data;
 public class GoogleSheetsService
 {
     private static string[] Scopes = [SheetsService.Scope.SpreadsheetsReadonly];
-    private static string ApplicationName = "StartUpWingDashboard";
+    private static string ApplicationName = "swingminchanDashboard";
     private static string CredentialsFilePath = $"{Environment.CurrentDirectory}/google-credentials.json";
-    private static string SpreadsheetId = "1x9YAeQSLcm4tHL_n7vutENyuVaM2f17jXKNAK1jjzwg";
+    private static string SpreadsheetId = "1pE0bhxnOdr4PzH7RZcGUVF_7uRFeZfQAIANfxTSH1Pw";
     
     public async Task<IList<IList<object>>?> Get(string sheetName, string startColumn, string startRow, string endColumn, string endRow)
     {
