@@ -10,6 +10,10 @@ public partial class Home : ComponentBase
     {
         if (firstRender)
         {
+            await SetMyData(94);
+            on = true;
+            StateHasChanged();
+            return;
             var cookie = await CookieService.GetAsync("accessToken");
             if (cookie != null)
             {
