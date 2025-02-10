@@ -1,0 +1,52 @@
+.table-header-item[b-3oz636pb0y] {
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.table-body-item[b-3oz636pb0y] {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 16px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.normalBadge[b-3oz636pb0y] {
+    width: 61px;
+    height: 28px;
+    border-radius: 4px;
+    padding: 6px 12px 6px 12px;
+    background-color: rgba(0, 153, 255, 0.15);
+    color: #0099ff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.adminBadge[b-3oz636pb0y] {
+    width: 61px;
+    height: 28px;
+    border-radius: 4px;
+    padding: 6px 12px;
+    background-color: rgba(255, 34, 34, 0.15);
+    color: #ff2222;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.conciergeBadge[b-3oz636pb0y] {
+    width: 61px;
+    height: 28px;
+    border-radius: 4px;
+    padding: 6px 12px;
+    background-color: rgba(133, 133, 133, 0.15);
+    color: #999999;
+    font-size: 14px;
+    font-weight: 700;
+}

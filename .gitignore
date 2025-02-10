@@ -4,7 +4,6 @@
 ### DotnetCore ###
 # .NET Core build folders
 bin/
-obj/
 
 # Visual Studio cache directory
 .vs/

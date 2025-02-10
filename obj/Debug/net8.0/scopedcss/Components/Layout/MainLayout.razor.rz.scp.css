@@ -1,0 +1,42 @@
+body[b-ryurj7oiee] {
+    font-weight: 400;
+    line-height: 1;
+}
+
+.swing-header[b-ryurj7oiee] {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 12px 0;
+    height: 80px;
+}
+
+.swing-top[b-ryurj7oiee] {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 15px 40px;
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.swing-main[b-ryurj7oiee] {
+    display: flex;
+    width: 100%;
+}
+
+.side-menu[b-ryurj7oiee] {
+    background-color: #eeeeee;
+    width: 220px;
+    min-width: 220px;
+    padding: 20px 40px;
+}
+
+.main-page[b-ryurj7oiee] {
+    width: 100%;
+    min-height: calc(100dvh - 80px);
+}
+
+.main-article[b-ryurj7oiee] {
+    padding: 30px 40px;
+    gap: 30px;
+}

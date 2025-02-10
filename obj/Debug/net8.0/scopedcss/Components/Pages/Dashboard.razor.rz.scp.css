@@ -1,0 +1,125 @@
+input[type="checkbox"][b-6d4f5xir9i] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #0099ff;
+    background-color: white;
+    background-clip: content-box;
+    padding: 0.2em;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked[b-6d4f5xir9i] {
+    border-color: #0099ff;
+    background-color: #0099ff;
+}
+
+.header[b-6d4f5xir9i] {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modify[b-6d4f5xir9i] {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modify img[b-6d4f5xir9i] {
+    width: 12px;
+    height: 12px;
+}
+
+.modify-text[b-6d4f5xir9i] {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.dashboard-row[b-6d4f5xir9i] {
+    display: flex;
+    gap: 10px;
+}
+
+.dashboard-col-3[b-6d4f5xir9i] {
+    flex: 0 0 33%;
+    max-width: 33%;
+    padding: 10px;
+}
+
+.modal-overlay[b-6d4f5xir9i] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-base[b-6d4f5xir9i] {
+    position: relative;
+    display: contents;
+}
+
+.modal-content[b-6d4f5xir9i] {
+    position: absolute;
+    width: 200px;
+    height: 344px;
+    right: 30px;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-list[b-6d4f5xir9i] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+}
+
+.modal-list-item[b-6d4f5xir9i] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    width: 100%;
+}
+
+.modal-list-item-title[b-6d4f5xir9i] {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.modal-list-button[b-6d4f5xir9i] {
+    width: 184px;
+    height: 32px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #0099ff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-list-button-text[b-6d4f5xir9i] {
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+}
+
+.home[b-6d4f5xir9i] {
+    top: 164px;
+}
+
+.full[b-6d4f5xir9i] {
+    top: 80px;
+}
