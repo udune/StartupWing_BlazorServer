@@ -10,7 +10,7 @@ public partial class Home_Salin : ComponentBase
     {
         if (firstRender)
         {
-            await SetMyData(94);
+            await SetMyData(1);
             on = true;
             StateHasChanged();
             return;
