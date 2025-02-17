@@ -15,7 +15,7 @@ builder.Services.AddTransient<APIService>();
 builder.Services.AddTransient<SwingServerApiService>();
 builder.Services.AddTransient<TokenService>();
 builder.Services.AddTransient<GoogleSheetsService>();
-builder.Services.AddHttpClient<APIService>(c => c.BaseAddress = new Uri("http://ec2-3-34-192-160.ap-northeast-2.compute.amazonaws.com:7676"));
+builder.Services.AddHttpClient<APIService>(c => c.BaseAddress = new Uri("https://swingminchanapi.azurewebsites.net"));
 builder.Services.AddHttpClient<SwingServerApiService>(c => c.BaseAddress = new Uri("https://dev-api.startupwing.net"))
     .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
     {
@@ -31,7 +31,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAntiforgery();
