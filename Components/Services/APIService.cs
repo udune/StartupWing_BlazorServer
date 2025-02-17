@@ -35,7 +35,7 @@ public class APIService (HttpClient client)
     public async Task<UserData?> GetUserData_ID(int? id)
     {
         var result = await client.GetAsync($"User/GetUser/id/{id}");
-        Console.WriteLine(result);
+
         var resultContent = await result.Content.ReadAsStringAsync();
         var resultEmployeeData = JsonConvert.DeserializeObject<UserData>(resultContent);
         return resultEmployeeData;

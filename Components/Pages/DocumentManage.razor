@@ -37,7 +37,7 @@
     <Row Context="item">
         <td class="table-body-item" style="width:120px;">@item.Id</td>
         <td class="table-body-item" style="width:270px;">@item.Title</td>
-        <td class="table-body-item" style="width:270px;"><a class="nav-link" href="@item.FileData[0].Url" download>@item.FileData[0].FileName</a></td>
+        <td class="table-body-item" style="width:270px;"><NavLink class="nav-link" href="@item.FileData[0].Url">@item.FileData[0].FileName</NavLink></td>
         <td class="table-body-item" style="width:120px;">@item.CreatedTime.ToString("yyyy-MM-dd")</td>
         <td class="table-body-item" style="width:120px;">@item.ExpireAt.ToString("yyyy-MM-dd")</td>
         <td class="table-body-item" style="width:120px;">@(item.IsPublic ? "전체":"대외비")</td>

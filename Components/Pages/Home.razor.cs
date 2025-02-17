@@ -10,7 +10,7 @@ public partial class Home : ComponentBase
     {
         if (firstRender)
         {
-            await SetMyData(1);
+            await SetMyData(94);
             on = true;
             StateHasChanged();
             return;

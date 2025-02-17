@@ -56,7 +56,7 @@
         <td class="table-body-item" style="width:120px;">@item.ManageNumber</td>
         <td class="table-body-item" style="width:330px;">@item.Title</td>
         <td class="table-body-item" style="width:330px;">
-            <a class="nav-link" href="@item.FileData[0].Url" download>@item.FileData[0].FileName</a>
+            <NavLink class="nav-link" href="@item.FileData[0].Url">@item.FileData[0].FileName</NavLink>
         </td>
         <td class="table-body-item" style="width:120px;">@item.Offeree</td>
         <td class="table-body-item" style="width:120px;">@item.ContractDate.ToString("yyyy-MM-dd")</td>
